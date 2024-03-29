@@ -35,6 +35,7 @@ const ClientsTable: React.FC<{ username: string }> = ({ username }) => {
                     onRow={onRow}
                     dataSource={clients}
                     rowKey="id"
+                    data-testid="clients-table"
                 >
                     <Column key="name" title="Name" dataIndex="name" />
                     <Column key="email" title="Email" dataIndex="email" />
