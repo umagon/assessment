@@ -16,7 +16,7 @@ export default function HomePage() {
     return (
         <div>
             <span style={{ float: "right" }}>
-                <Button type="primary" danger onClick={logoutAction}>
+                <Button type="primary" danger onClick={() => logoutAction()}>
                     Logout
                 </Button>
             </span>

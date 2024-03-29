@@ -8,17 +8,21 @@ export default function LoginPage() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const { mutate: signIn } = useMutation(
-        ({ username, password }) => login(username, password),
+    const { mutate: signIn } = useMutation<
+        unknown,
+        unknown,
         {
-            onSuccess: () => {
-                navigate("/");
-            },
-            onError: (err) => {
-                setError(String(err));
-            },
+            username: string;
+            password: string;
         }
-    );
+    >(({ username, password }) => login(username, password), {
+        onSuccess: () => {
+            navigate("/");
+        },
+        onError: (err) => {
+            setError(String(err));
+        },
+    });
 
     return (
         <Card style={{ width: 500 }}>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useState } from "react";
 import ClientInfo from "../ClientInfo";
 import { Client } from "../../domain/Client";
 import { getClients } from "../../api/clients";
@@ -6,10 +6,9 @@ import { useQuery } from "react-query";
 import styles from "./styles.module.css";
 
 import { Card, Space, Table } from "antd";
-import { useRouteLoaderData } from "react-router-dom";
 const { Column } = Table;
 
-export default function ClientsTable({ username }) {
+const ClientsTable: React.FC<{ username: string }> = ({ username }) => {
     const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
     const {
@@ -19,7 +18,7 @@ export default function ClientsTable({ username }) {
         data: clients,
     } = useQuery(["clients", username], () => getClients(username));
 
-    const onRow = (record: Client, _rowIndex) => ({
+    const onRow = (record: Client) => ({
         onClick: () => setSelectedClient(record),
     });
 
@@ -49,4 +48,5 @@ export default function ClientsTable({ username }) {
             {selectedClient && <ClientInfo client={selectedClient} />}
         </Space>
     );
-}
+};
+export default ClientsTable;

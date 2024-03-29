@@ -14,7 +14,9 @@ import HomePage from "./routes/HomePage";
 
 async function enableMocking() {
     if (import.meta.env.PROD) {
-        return;
+        // skipping the return because we don't have a backend
+        // we need the mocking.
+        // return;
     }
 
     const { worker } = await import("./mocks/browser");

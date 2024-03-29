@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import "./Root.css";
+import React from "react";
 
-const Root = () => {
+const Root: React.FC = () => {
     return <Outlet />;
 };
 
