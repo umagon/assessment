@@ -3,6 +3,7 @@ import ClientsTable from "../components/ClientsTable";
 import { Button } from "antd";
 import { useMutation } from "react-query";
 import { logout } from "../api/auth";
+import { ErrorBoundary } from "react-error-boundary";
 
 export default function HomePage() {
     const { username } = useLoaderData() as Record<string, string>;
@@ -23,7 +24,15 @@ export default function HomePage() {
             <div style={{ clear: "both" }}></div>
             <h1>My clients</h1>
 
-            <ClientsTable username={username} />
+            <ErrorBoundary
+                fallback={
+                    <div>
+                        The clients pane couldn't be displayed due to an error.
+                    </div>
+                }
+            >
+                <ClientsTable username={username} />
+            </ErrorBoundary>
         </div>
     );
 }

@@ -3,6 +3,7 @@ import ClientInfo from "../ClientInfo";
 import { Client } from "../../domain/Client";
 import { getClients } from "../../api/clients";
 import { useQuery } from "react-query";
+import { ErrorBoundary } from "react-error-boundary";
 import styles from "./styles.module.css";
 
 import { Card, Space, Table } from "antd";
@@ -45,7 +46,15 @@ const ClientsTable: React.FC<{ username: string }> = ({ username }) => {
                     <Column key="address" title="Address" dataIndex="address" />
                 </Table>
             </Card>
-            {selectedClient && <ClientInfo client={selectedClient} />}
+            <ErrorBoundary
+                fallback={
+                    <div>
+                        The accounts pane couldn't be displayed due to an error.
+                    </div>
+                }
+            >
+                {selectedClient && <ClientInfo client={selectedClient} />}
+            </ErrorBoundary>
         </Space>
     );
 };

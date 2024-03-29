@@ -1,6 +1,12 @@
 # Assessment app
 
-Steps to get it up and running:
+Deployed at https://main--lighthearted-dolphin-910288.netlify.app/login
+
+### Login
+There are 3 mockup users: `first:First1234`, `second:Second1234` and `third:Third1234`
+
+### Steps to get it up and running
+
 
 
 
